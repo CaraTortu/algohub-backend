@@ -29,7 +29,7 @@ func registerServers(s *grpc.Server) {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
 
-	pb.RegisterExampleServer(s, &servers.ExampleServer{DB: db, Env: &env})
+	pb.RegisterCourseServiceServer(s, &servers.CourseServer{DB: db, Env: &env})
 }
 
 // Used to get environment variables
@@ -95,8 +95,8 @@ func main() {
 		Use:   "seed_db",
 		Short: "Seed the database",
 		Run: func(cmd *cobra.Command, args []string) {
-			//env := getEnvironment()
-			//db.SeedDB(&env)
+			// env := getEnvironment()
+			// db.SeedDB(&env)
 		},
 	})
 
